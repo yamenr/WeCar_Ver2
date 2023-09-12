@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.wecar.D_FireBase.Car;
 import com.example.wecar.D_FireBase.CarItem;
 import com.example.wecar.D_FireBase.FirebaseServices;
+import com.example.wecar.D_FireBase.User;
 import com.example.wecar.MainActivity;
 import com.example.wecar.R;
 import com.example.wecar.utilities.CarListAdapter2;
@@ -98,7 +99,7 @@ public class CarListMapFragment extends Fragment {
         cars = getCars();
         myAdapter = new CarListAdapter2(getActivity(), cars);
 
-        myAdapter.setOnItemClickListener(new myAdapter1.OnItemClickListener() {
+        myAdapter.setOnItemClickListener(new CarListAdapter2.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
                 // Handle item click here
@@ -189,7 +190,7 @@ public class CarListMapFragment extends Fragment {
         myAdapter= new CarListAdapter2(getActivity(),filteredList);
         recyclerView.setAdapter(myAdapter); */
 
-        myAdapter.setOnItemClickListener(new myAdapter1.OnItemClickListener() {
+        myAdapter.setOnItemClickListener(new CarListAdapter2.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
                 // Handle item click here
@@ -262,6 +263,11 @@ public class CarListMapFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        //fbs.updateUser();
+
+        User u = ((MainActivity)getActivity()).getUserDataObject();
+        if (u != null)
+            fbs.updateUser(u); // updating favorites
+
+
     }
 }

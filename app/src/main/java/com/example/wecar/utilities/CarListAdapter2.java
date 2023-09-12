@@ -11,7 +11,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.wecar.D_FireBase.Car;
 import com.example.wecar.D_FireBase.CarItem;
 import com.example.wecar.D_FireBase.User;
 import com.example.wecar.MainActivity;
@@ -19,12 +18,11 @@ import com.example.wecar.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.Map;
 
-public class CarListAdapter2 extends RecyclerView.Adapter<myAdapter1.MyViewHolder> {
+public class CarListAdapter2 extends RecyclerView.Adapter<CarListAdapter2.MyViewHolder> {
     Context context;
     ArrayList<CarItem> carsList;
-    private myAdapter1.OnItemClickListener itemClickListener;
+    private CarListAdapter2.OnItemClickListener itemClickListener;
 
     public CarListAdapter2(Context context, ArrayList<CarItem> carsList) {
         this.context = context;
@@ -33,15 +31,22 @@ public class CarListAdapter2 extends RecyclerView.Adapter<myAdapter1.MyViewHolde
 
     @NonNull
     @Override
-    public myAdapter1.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
+    public CarListAdapter2.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
         View v= LayoutInflater.from(context).inflate(R.layout.item,parent,false);
-        return  new myAdapter1.MyViewHolder(v);
+        return  new CarListAdapter2.MyViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull myAdapter1.MyViewHolder holder, int position){
+    public void onBindViewHolder(@NonNull CarListAdapter2.MyViewHolder holder, int position){
         CarItem car= carsList.get(position);
-
+        User u = ((MainActivity)context).getUserDataObject();
+        if (u != null)
+        {
+            if (u.getFavourits().contains(car.getId()))
+                Picasso.get().load(R.drawable.favcheck).into(holder.ivCar);
+            else
+                Picasso.get().load(R.drawable.ic_fav).into(holder.ivCar);
+        }
         holder.carName.setText(car.getNameCar());
         holder.Price.setText(car.getPrice() + " ₪");
         holder.Year.setText(car.getYear());
@@ -65,30 +70,34 @@ public class CarListAdapter2 extends RecyclerView.Adapter<myAdapter1.MyViewHolde
             public void onClick(View v) {
                 if (isFavorite(car) == true)
                 {
-                    removeStar(car);
+                    removeStar(car, holder);
                 }
                 else
                 {
-                    addStar(car);
+                    addStar(car, holder);
                 }
                 //setFavourite(holder, car);
             }
         });
     }
 
-    private void removeStar(CarItem car) {
+    private void removeStar(CarItem car, CarListAdapter2.MyViewHolder holder) {
         User u = ((MainActivity)context).getUserDataObject();
         if (u != null) {
-            if (u.getFavourits().contains(car.getId()))
+            if (u.getFavourits().contains(car.getId())) {
                 u.getFavourits().remove(car.getId());
+                Picasso.get().load(R.drawable.ic_fav).into(holder.ivCar);
+            }
         }
     }
 
-    private void addStar(CarItem car) {
+    private void addStar(CarItem car, CarListAdapter2.MyViewHolder holder) {
         User u = ((MainActivity)context).getUserDataObject();
         if (u != null) {
-            if (u.getFavourits().contains(car.getId()))
+            if (u.getFavourits().contains(car.getId())) {
                 u.getFavourits().add(car.getId());
+                Picasso.get().load(R.drawable.favcheck).into(holder.ivCar);
+            }
         }
     }
 
@@ -102,7 +111,7 @@ public class CarListAdapter2 extends RecyclerView.Adapter<myAdapter1.MyViewHolde
         return false;
     }
 
-    private void setFavourite(@NonNull myAdapter1.MyViewHolder holder, CarItem car) {
+    private void setFavourite(@NonNull CarListAdapter2.MyViewHolder holder, CarItem car) {
         // TODO: if not favourite add, else remove
 
         /*
@@ -142,7 +151,7 @@ public class CarListAdapter2 extends RecyclerView.Adapter<myAdapter1.MyViewHolde
         void onItemClick(int position);
     }
 
-    public void setOnItemClickListener(myAdapter1.OnItemClickListener listener) {
+    public void setOnItemClickListener(CarListAdapter2.OnItemClickListener listener) {
         this.itemClickListener = listener;
     }
 }
