@@ -27,7 +27,7 @@
                 android:textStyle="bold"
                 android:textSize="15sp"/>
 
-            <Button
+            <ImageView
                 android:id="@+id/ivFavoriteIcon"
                 android:layout_width="24dp"
                 android:layout_height="24dp"

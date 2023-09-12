@@ -86,8 +86,7 @@ public class myAdapter1 extends RecyclerView.Adapter<myAdapter1.MyViewHolder> {
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         TextView  carName,Price,Year,location,GearShift,kilometre;
-        ImageView ivCar;
-        Button ivFavourite;
+        ImageView ivCar, ivFavourite;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             carName=itemView.findViewById(R.id.tvNameCar_carListFragment);

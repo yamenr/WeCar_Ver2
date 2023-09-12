@@ -172,8 +172,9 @@ public class MainActivity extends AppCompatActivity {
                                 for (QueryDocumentSnapshot document : task.getResult()) {
 
                                     User user = document.toObject(User.class);
-                                    if (fbs.getAuth().getCurrentUser().getEmail().equals(user.getUsername())) {
+                                    if (fbs.getAuth().getCurrentUser() != null && (fbs.getAuth().getCurrentUser().getEmail().equals(user.getUsername()))) {
                                         currentUser[0] = document.toObject(User.class);
+                                        userData = currentUser[0];
                                     }
                                 }
                             } else {

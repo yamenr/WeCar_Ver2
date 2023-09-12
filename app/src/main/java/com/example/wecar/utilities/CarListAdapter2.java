@@ -86,7 +86,8 @@ public class CarListAdapter2 extends RecyclerView.Adapter<CarListAdapter2.MyView
         if (u != null) {
             if (u.getFavourits().contains(car.getId())) {
                 u.getFavourits().remove(car.getId());
-                Picasso.get().load(R.drawable.ic_fav).into(holder.ivCar);
+                holder.ivFavourite.setImageResource(android.R.color.transparent);
+                Picasso.get().load(R.drawable.ic_fav).into(holder.ivFavourite);
             }
         }
     }
@@ -94,10 +95,9 @@ public class CarListAdapter2 extends RecyclerView.Adapter<CarListAdapter2.MyView
     private void addStar(CarItem car, CarListAdapter2.MyViewHolder holder) {
         User u = ((MainActivity)context).getUserDataObject();
         if (u != null) {
-            if (u.getFavourits().contains(car.getId())) {
                 u.getFavourits().add(car.getId());
-                Picasso.get().load(R.drawable.favcheck).into(holder.ivCar);
-            }
+            holder.ivFavourite.setImageResource(android.R.color.transparent);
+            Picasso.get().load(R.drawable.favcheck).into(holder.ivFavourite);
         }
     }
 
@@ -111,20 +111,6 @@ public class CarListAdapter2 extends RecyclerView.Adapter<CarListAdapter2.MyView
         return false;
     }
 
-    private void setFavourite(@NonNull CarListAdapter2.MyViewHolder holder, CarItem car) {
-        // TODO: if not favourite add, else remove
-
-        /*
-        if (isUserFavourite(car) == true)
-        {
-            holder.ivFavourite.setBackgroundResource(R.drawable.ic_fav);
-        }
-        else
-        {
-
-        } */
-    }
-
     @Override
     public int getItemCount(){
         return carsList.size();
@@ -132,8 +118,7 @@ public class CarListAdapter2 extends RecyclerView.Adapter<CarListAdapter2.MyView
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         TextView carName,Price,Year,location,GearShift,kilometre;
-        ImageView ivCar;
-        Button ivFavourite;
+        ImageView ivCar, ivFavourite;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             carName=itemView.findViewById(R.id.tvNameCar_carListFragment);
