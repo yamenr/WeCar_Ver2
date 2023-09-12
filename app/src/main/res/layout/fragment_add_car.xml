@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".pagess.AddCarFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Car Number -->
+        <EditText
+            android:id="@+id/etCarNumberAddFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Car Number" />
+
+        <!-- Car Name -->
+        <EditText
+            android:id="@+id/etNameCarAddFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name of Car" />
+
+        <!-- Car Model -->
+        <EditText
+            android:id="@+id/etCarModelAddFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Car Model" />
+
+        <!-- Year of Car -->
+        <Spinner
+            android:id="@+id/yearOfCarSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Year of Car" />
+
+        <!-- Manufacturer -->
+        <EditText
+            android:id="@+id/etManufacturerAddFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Manufacturer" />
+
+        <!-- Phone -->
+        <EditText
+            android:id="@+id/etPhoneAddFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone" />
+
+        <!-- Car Type -->
+
+        <!-- Year of Test -->
+        <EditText
+            android:id="@+id/etTestAddFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Year of Test" />
+
+        <!-- Kilometres -->
+        <EditText
+            android:id="@+id/etKilometreAddFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Kilometres" />
+
+        <!-- Engine Capacity -->
+        <EditText
+            android:id="@+id/etEngineCapacityAddFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Engine Capacity" />
+
+        <!-- ... other views ... -->
+
+        <!-- Owners -->
+        <EditText
+            android:id="@+id/etOwnersAddFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Owners" />
+
+        <!-- Horse Power -->
+        <EditText
+            android:id="@+id/etHorsePowerAddFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Horse Power" />
+
+        <!-- Gear Shifting Model -->
+        <EditText
+            android:id="@+id/etGearShiftAddFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Gear Shifting Model" />
+
+        <!-- Color Spinner -->
+        <Spinner
+            android:id="@+id/ColorSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Color" />
+
+        <!-- Price -->
+        <EditText
+            android:id="@+id/etPriceAddFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Price" />
+
+        <!-- Buttons for actions -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <TextView
+                android:layout_width="120sp"
+                android:layout_height="40sp"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:text="insert a image:->"
+                />
+            <ImageView
+                android:id="@+id/ivCarAddCarFragment"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_launcher_background" />
+
+            <Button
+                android:id="@+id/btnAddCarADDFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ADD"
+                android:layout_marginStart="16dp"
+                android:backgroundTint="#6F7F8F"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
+
+
+    <!--
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".AddCarFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toTopOf="@+id/etManufacturerAddFragment"
+            app:layout_constraintEnd_toEndOf="@+id/etHorsePowerAddFragment"
+            app:layout_constraintStart_toEndOf="@+id/etHorsePowerAddFragment"
+            app:layout_constraintTop_toTopOf="@+id/etManufacturerAddFragment">
+
+
+            <EditText
+                android:id="@+id/etCarNumberAddFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="21dp"
+                android:ems="10"
+                android:hint="car_num"
+                android:inputType="textEmailAddress"
+                app:layout_constraintBottom_toTopOf="@+id/etPriceAddFragment"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etGearShiftAddFragment" />
+
+            <EditText
+                android:id="@+id/etOwnersAddFragment"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="19dp"
+                android:ems="10"
+                android:hint="owners"
+                android:inputType="textEmailAddress"
+                app:layout_constraintBottom_toTopOf="@+id/etKilometreAddFragment"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/etCarTypeAddFragment"
+                app:layout_constraintTop_toTopOf="@+id/etCarTypeAddFragment" />
+
+            <EditText
+                android:id="@+id/etHorsePowerAddFragment"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="19dp"
+                android:layout_marginBottom="4dp"
+                android:ems="10"
+                android:hint="horse power"
+                android:inputType="textEmailAddress"
+                app:layout_constraintBottom_toTopOf="@+id/etOwnersAddFragment"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/etNameCarAddFragment"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/etGearShiftAddFragment"
+                android:layout_width="170dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="11dp"
+                android:ems="10"
+                android:hint="Gear_shifting_model"
+                android:inputType="textEmailAddress"
+                app:layout_constraintBottom_toTopOf="@+id/etCarNumberAddFragment"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etTestAddFragment" />
+
+            <EditText
+                android:id="@+id/etPriceAddFragment"
+                android:layout_width="175dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="63dp"
+                android:ems="10"
+                android:hint="Price"
+                android:inputType="textEmailAddress"
+                app:layout_constraintBottom_toTopOf="@+id/btnAddCarADDFragment"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etCarNumberAddFragment" />
+
+            <Spinner
+                android:id="@+id/ColorSpinner"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="23dp"
+                android:layout_marginBottom="15dp"
+                android:background="#19C6B4B4"
+                android:popupBackground="#9C9595"
+                android:spinnerMode="dialog"
+                app:layout_constraintBottom_toTopOf="@+id/etManufacturerAddFragment"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/yearOfCarSpinner"
+                app:layout_constraintTop_toBottomOf="@+id/etCarModelAddFragment" />
+
+            <Spinner
+                android:id="@+id/yearOfCarSpinner"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="78dp"
+                android:layout_marginBottom="11dp"
+                android:background="#19C6B4B4"
+                android:popupBackground="#9C9595"
+                android:spinnerMode="dialog"
+                app:layout_constraintBottom_toTopOf="@+id/etManufacturerAddFragment"
+                app:layout_constraintEnd_toStartOf="@+id/ColorSpinner"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etCarModelAddFragment" />
+
+            <EditText
+                android:id="@+id/etManufacturerAddFragment"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="10dp"
+                android:ems="10"
+                android:hint="manufacturer"
+                android:inputType="textEmailAddress"
+                app:layout_constraintBottom_toTopOf="@+id/etEngineCapacityAddFragment"
+                app:layout_constraintEnd_toEndOf="@+id/etEngineCapacityAddFragment"
+                app:layout_constraintStart_toStartOf="@+id/etEngineCapacityAddFragment"
+                app:layout_constraintTop_toBottomOf="@+id/yearOfCarSpinner" />
+
+            <EditText
+                android:id="@+id/etCarTypeAddFragment"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="69dp"
+                android:ems="10"
+                android:hint="car_type"
+                android:inputType="textEmailAddress"
+                app:layout_constraintBottom_toTopOf="@+id/etCarModelAddFragment"
+                app:layout_constraintEnd_toStartOf="@+id/etOwnersAddFragment"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etNameCarAddFragment" />
+
+            <EditText
+                android:id="@+id/etCarModelAddFragment"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="71dp"
+                android:layout_marginBottom="15dp"
+                android:ems="10"
+                android:hint="Car_model"
+                android:inputType="textEmailAddress"
+                app:layout_constraintBottom_toTopOf="@+id/yearOfCarSpinner"
+                app:layout_constraintEnd_toStartOf="@+id/etKilometreAddFragment"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etCarTypeAddFragment" />
+
+            <EditText
+                android:id="@+id/etNameCarAddFragment"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="70dp"
+                android:ems="10"
+                android:hint="name of car"
+                android:inputType="textEmailAddress"
+                app:layout_constraintBottom_toTopOf="@+id/etCarTypeAddFragment"
+                app:layout_constraintEnd_toStartOf="@+id/etHorsePowerAddFragment"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/etTestAddFragment"
+                android:layout_width="170dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="10dp"
+                android:ems="10"
+                android:hint="year of test"
+                android:inputType="textEmailAddress"
+                app:layout_constraintBottom_toTopOf="@+id/etGearShiftAddFragment"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etEngineCapacityAddFragment" />
+
+            <EditText
+                android:id="@+id/etKilometreAddFragment"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_marginTop="109dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="110dp"
+                android:ems="10"
+                android:hint="Km...."
+                android:inputType="textEmailAddress"
+                app:layout_constraintBottom_toBottomOf="@+id/etManufacturerAddFragment"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/etCarModelAddFragment"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/etEngineCapacityAddFragment"
+                android:layout_width="299dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="38dp"
+                android:layout_marginBottom="13dp"
+                android:ems="10"
+                android:hint="Engine_capacity"
+                android:inputType="textEmailAddress"
+                app:layout_constraintBottom_toTopOf="@+id/etTestAddFragment"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etManufacturerAddFragment" />
+
+            <LinearLayout
+                android:layout_width="172dp"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                tools:layout_editor_absoluteX="116dp"
+                tools:layout_editor_absoluteY="658dp">
+
+                <ImageView
+                    android:id="@+id/ivCarAddCarFragment"
+                    android:layout_width="87dp"
+                    android:layout_height="71dp"
+                    android:src="@drawable/ic_launcher_background" />
+
+                <Button
+                    android:id="@+id/btnAddCarADDFragment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="7dp"
+                    android:text="ADD" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout> -->

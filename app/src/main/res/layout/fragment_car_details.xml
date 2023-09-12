@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:id="@+id/scrollView"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".pagess.AddCarFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- ImageView for Car Image -->
+
+        <ImageView
+            android:id="@+id/ivCarDetailsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:clickable="true"
+            android:scaleType="fitCenter"
+            android:contentDescription="Car Image"
+            android:onClick="toBigImg"/>
+
+        <!-- Buttons for SMS, WhatsApp, and Call -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnSMS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SMS"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="#6F7F8F"/>
+
+            <Button
+                android:id="@+id/btnWhatsApp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="WhatsApp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="#00E40E"/>
+
+            <Button
+                android:id="@+id/btnCall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Call"
+                android:backgroundTint="#6F7F8F"/>
+
+        </LinearLayout>
+
+        <!-- Car Name -->
+        <TextView
+            android:id="@+id/textView111"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Number of car :"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tvCarNumberDetailsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="-20dp"
+            android:hint="Car Number" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Name of car :"
+            android:layout_marginTop="20sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tvNameCarDetailsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name of Car"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="-20dp"/>
+
+        <!-- Car Model -->
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Model:"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/tvCarModelDetailsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Car Model"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="-20dp"/>
+
+        <!-- Year of Car -->
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Year:"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/tvYearDetailsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Year of Car"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="-20dp"/>
+
+        <!-- Manufacturer -->
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Manufacturer"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/tvManufacturerDetailsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Manufacturer"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="-20dp"/>
+
+        <!-- Car Type -->
+
+        <!-- Year of Test -->
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Year of Test:"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/tvTestDetailsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Year of Test"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="-20dp"/>
+
+        <!-- Kilometres -->
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kilometres :"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/tvKilometreDetailsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Kilometres"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="-20dp"/>
+
+        <!-- Engine Capacity -->
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Engine Capacity:"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/tvEngineCapacityDetailsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Engine Capacity"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="-20dp"/>
+
+        <!-- ... other views ... -->
+
+        <!-- Owners -->
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Owners:"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/tvOwnersDetailsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Owners"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="-20dp"/>
+
+        <!-- Phone -->
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Phone Number :"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/tvPhoneDetailsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Owners"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="-20dp"/>
+
+        <!-- Horse Power -->
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Horse Power:"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/tvHorsePowerDetailsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Horse Power"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="-20dp"/>
+
+        <!-- Gear Shifting Model -->
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gear Shifting:"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/tvGearShiftDetailsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Gear Shifting Model"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="-20dp"/>
+
+        <!-- Color -->
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Color :"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/tvColorDetailsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Color"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="-20dp"/>
+
+        <!-- Price -->
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Price:"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/tvPriceDetailsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Price"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="-20dp"/>
+
+        <!-- Buttons for actions -->
+
+    </LinearLayout>
+</ScrollView>

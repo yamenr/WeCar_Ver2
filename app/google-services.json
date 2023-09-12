@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "199143789820",
+    "project_id": "wecar-ad29c",
+    "storage_bucket": "wecar-ad29c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:199143789820:android:06b5344d44331db98cf379",
+        "android_client_info": {
+          "package_name": "com.example.wecar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBATHWI2GYHGxo0YAuy3DrnSpYtfBpnuA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

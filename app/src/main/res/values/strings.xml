@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">WeCar</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string-array name="array_colors">
+        <item>select color of car</item>
+
+        <item>Black</item>
+        <item>White</item>
+        <item>Red</item>
+        <item>Gray</item>
+        <item>Blue</item>
+
+    </string-array>
+</resources>
