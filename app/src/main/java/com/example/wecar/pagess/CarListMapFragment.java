@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -41,6 +42,7 @@ import java.util.Map;
  */
 public class CarListMapFragment extends Fragment {
     private RecyclerView recyclerView;
+    private ImageView ivProfile;
     private FirebaseServices fbs;
     private CarListAdapter2 myAdapter;
     private SearchView srchView;
@@ -92,6 +94,7 @@ public class CarListMapFragment extends Fragment {
 
     private void init() {
         recyclerView = getView().findViewById(R.id.rvCarlistMap);
+        ivProfile = getView().findViewById(R.id.ivProfileCarListMapFragment);
         fbs = FirebaseServices.getInstance();
         cars = new ArrayList<>();
         recyclerView.setHasFixedSize(true);
@@ -147,6 +150,12 @@ public class CarListMapFragment extends Fragment {
             }
         });
         //((MainActivity)getActivity()).pushFragment(new CarsListFragment());
+        ivProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotoProfileFragment();
+            }
+        });
     }
 
     private void applyFilter(String query) {
@@ -221,9 +230,9 @@ public class CarListMapFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_carr_list_map, container, false);
     }
 
-    public void gotoAddCarFragment() {
+    public void gotoProfileFragment() {
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.frameLayout,new AddCarFragment());
+        ft.replace(R.id.frameLayout,new ProfileFragment());
         ft.commit();
     }
 

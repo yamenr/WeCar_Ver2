@@ -244,9 +244,11 @@ public class FavoriteFragment extends Fragment {
                             if (task.isSuccessful()) {
                                 for (QueryDocumentSnapshot document : task.getResult()) {
                                     User u = fbs.getCurrentUser();
-                                    CarItem car = document.toObject(CarItem.class);
-                                    if (u.getFavourits().contains(car.getId()))
-                                        cars.add(document.toObject(CarItem.class));
+                                    if (u != null) {
+                                        CarItem car = document.toObject(CarItem.class);
+                                        if (u.getFavourits().contains(car.getId()))
+                                            cars.add(document.toObject(CarItem.class));
+                                    }
                                 }
 
                                 CarListAdapter2 adapter = new CarListAdapter2(getActivity(), cars);

@@ -101,6 +101,8 @@ public class MainActivity extends AppCompatActivity {
             }});
         fragmentContainer = findViewById(R.id.frameLayout);
         userData = getUserData();
+        //getSupportActionBar().setHomeAsUpIndicator(R.drawable.favcheck);// set drawable icon
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         if (fbs.getAuth().getCurrentUser() == null)
         {
             bottomNavigationView.setVisibility(View.GONE);
