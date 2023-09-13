@@ -20,6 +20,7 @@ import com.example.wecar.D_FireBase.User;
 import com.example.wecar.pagess.AddCarFragment;
 import com.example.wecar.pagess.CarListMapFragment;
 import com.example.wecar.pagess.CarsListFragment;
+import com.example.wecar.pagess.FavoriteFragment;
 import com.example.wecar.pagess.LoginFragment;
 import com.example.wecar.pagess.ProfileFragment;
 import com.example.wecar.pagess.SearchFragment;
@@ -70,10 +71,12 @@ public class MainActivity extends AppCompatActivity {
                 Fragment selectedFragment = null;
             if (item.getItemId() == R.id.action_home)
             {
-                selectedFragment = new CarsListFragment();
+                //selectedFragment = new CarsListFragment();
+                selectedFragment = new CarListMapFragment();
             }
             else if (item.getItemId() == R.id.action_fav) {
-                selectedFragment = new CarListMapFragment(); // Favourits
+                selectedFragment = new FavoriteFragment();
+                //selectedFragment = new CarListMapFragment(); // Favourits
             }
             else if (item.getItemId() == R.id.action_add) {
                 selectedFragment = new AddCarFragment();
@@ -81,6 +84,10 @@ public class MainActivity extends AppCompatActivity {
             else if (item.getItemId() == R.id.action_search) { // Add search bar
                 selectedFragment = new SearchFragment();
             }
+            /*
+            else if (item.getItemId() == R.id.action_profile) { // Add search bar
+                selectedFragment = new ProfileFragment();
+            } */
             else if (item.getItemId() == R.id.action_signout) {
                signout();
               //  selectedFragment=new ProfileFragment();
@@ -93,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }});
         fragmentContainer = findViewById(R.id.frameLayout);
+        userData = getUserData();
         if (fbs.getAuth().getCurrentUser() == null)
         {
             bottomNavigationView.setVisibility(View.GONE);
@@ -105,7 +113,6 @@ public class MainActivity extends AppCompatActivity {
             gotoCarList();
             pushFragment(new CarsListFragment());
         }
-        userData = getUserData();
     }
 
     public User getUserDataObject()
@@ -174,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
                                     User user = document.toObject(User.class);
                                     if (fbs.getAuth().getCurrentUser() != null && (fbs.getAuth().getCurrentUser().getEmail().equals(user.getUsername()))) {
                                         currentUser[0] = document.toObject(User.class);
-                                        userData = currentUser[0];
+                                        fbs.setCurrentUser(currentUser[0]);
                                     }
                                 }
                             } else {

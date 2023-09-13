@@ -16,6 +16,11 @@
         android:id="@+id/action_search"
         android:title="Search"
         android:icon="@drawable/ic_search" />
+    <!--
+    <item
+        android:id="@+id/action_profile"
+        android:title="Profile"
+        android:icon="@drawable/ic_profile" /> -->
     <item
         android:id="@+id/action_signout"
         android:title="Signout"

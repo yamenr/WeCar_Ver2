@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.wecar.D_FireBase.CarItem;
+import com.example.wecar.D_FireBase.FirebaseServices;
 import com.example.wecar.D_FireBase.User;
 import com.example.wecar.MainActivity;
 import com.example.wecar.R;
@@ -23,10 +24,12 @@ public class CarListAdapter2 extends RecyclerView.Adapter<CarListAdapter2.MyView
     Context context;
     ArrayList<CarItem> carsList;
     private CarListAdapter2.OnItemClickListener itemClickListener;
+    private FirebaseServices fbs;
 
     public CarListAdapter2(Context context, ArrayList<CarItem> carsList) {
         this.context = context;
         this.carsList = carsList;
+        this.fbs = FirebaseServices.getInstance();
     }
 
     @NonNull
@@ -39,13 +42,13 @@ public class CarListAdapter2 extends RecyclerView.Adapter<CarListAdapter2.MyView
     @Override
     public void onBindViewHolder(@NonNull CarListAdapter2.MyViewHolder holder, int position){
         CarItem car= carsList.get(position);
-        User u = ((MainActivity)context).getUserDataObject();
+        User u = fbs.getCurrentUser();
         if (u != null)
         {
             if (u.getFavourits().contains(car.getId()))
-                Picasso.get().load(R.drawable.favcheck).into(holder.ivCar);
+                Picasso.get().load(R.drawable.favcheck).into(holder.ivFavourite);
             else
-                Picasso.get().load(R.drawable.ic_fav).into(holder.ivCar);
+                Picasso.get().load(R.drawable.ic_fav).into(holder.ivFavourite);
         }
         holder.carName.setText(car.getNameCar());
         holder.Price.setText(car.getPrice() + " ₪");
@@ -82,7 +85,7 @@ public class CarListAdapter2 extends RecyclerView.Adapter<CarListAdapter2.MyView
     }
 
     private void removeStar(CarItem car, CarListAdapter2.MyViewHolder holder) {
-        User u = ((MainActivity)context).getUserDataObject();
+        User u = fbs.getCurrentUser();
         if (u != null) {
             if (u.getFavourits().contains(car.getId())) {
                 u.getFavourits().remove(car.getId());
@@ -93,7 +96,7 @@ public class CarListAdapter2 extends RecyclerView.Adapter<CarListAdapter2.MyView
     }
 
     private void addStar(CarItem car, CarListAdapter2.MyViewHolder holder) {
-        User u = ((MainActivity)context).getUserDataObject();
+        User u = fbs.getCurrentUser();
         if (u != null) {
                 u.getFavourits().add(car.getId());
             holder.ivFavourite.setImageResource(android.R.color.transparent);
@@ -102,7 +105,7 @@ public class CarListAdapter2 extends RecyclerView.Adapter<CarListAdapter2.MyView
     }
 
     private boolean isFavorite(CarItem car) {
-        User u = ((MainActivity)context).getUserDataObject();
+        User u = fbs.getCurrentUser();
         if (u != null)
         {
             if (u.getFavourits().contains(car.getId()))

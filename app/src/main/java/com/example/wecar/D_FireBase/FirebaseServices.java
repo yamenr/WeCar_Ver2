@@ -25,6 +25,7 @@ public class FirebaseServices {
     private FirebaseFirestore fire;
     private FirebaseStorage storage;
     private Uri selectedImageURL;
+    private User currentUser;
 
     public Uri getSelectedImageURL() {
         return selectedImageURL;
@@ -39,6 +40,7 @@ public class FirebaseServices {
         auth=FirebaseAuth.getInstance();
         fire=FirebaseFirestore.getInstance();
         storage=FirebaseStorage.getInstance();
+        currentUser = null;
         selectedImageURL = null;
     }
 
@@ -119,4 +121,11 @@ public class FirebaseServices {
         return flag[0];
     }
 
+    public User getCurrentUser() {
+        return currentUser;
+    }
+
+    public void setCurrentUser(User currentUser) {
+        this.currentUser = currentUser;
+    }
 }
