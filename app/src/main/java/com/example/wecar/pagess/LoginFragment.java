@@ -91,24 +91,22 @@ public class LoginFragment extends Fragment {
         super.onStart();
         // connecting components
         fbs=FirebaseServices.getInstance();
-        if (fbs.getAuth().getCurrentUser() != null)
-            gotoCarList();
         asGuest=getView().findViewById(R.id.btnGuest);
-
-
+        asGuest.setVisibility(View.INVISIBLE);
         etUsername=getView().findViewById(R.id.etUsernameLogin);
         tvSignupLink=getView().findViewById(R.id.tvSignupLinkLogin);
         tvForgotPasswardLink=getView().findViewById(R.id.tvForgotPasswordLogin);
         etPassword=getView().findViewById(R.id.etPasswordLogin);
         btnLogin=getView().findViewById(R.id.btnLoginLogin);
 
+        /*
         asGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 gotoCarList();
                 setNavigationBarVisible();
             }
-        });
+        }); */
 
         tvSignupLink.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -149,7 +147,7 @@ public class LoginFragment extends Fragment {
                         {
                             //Toast.makeText(getActivity(), "you have succesfully logged", Toast.LENGTH_SHORT).show();
                             //gotoAddCarFragment();
-                            gotoCarList();
+                            gotoCarListMap();
                             Toast.makeText(getActivity(), "Welcome ", Toast.LENGTH_SHORT).show();
 
                             setNavigationBarVisible();
@@ -172,9 +170,9 @@ public class LoginFragment extends Fragment {
         ((MainActivity)getActivity()).getBottomNavigationView().setVisibility(View.VISIBLE);
     }
 
-    public void gotoCarList() {
+    public void gotoCarListMap() {
         FragmentTransaction ft=getActivity().getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.frameLayout,new CarsListFragment());
+        ft.replace(R.id.frameLayout,new CarListMapFragment());
         ft.commit();
     }
     private void gotoAddCarFragment() {
@@ -195,9 +193,9 @@ public class LoginFragment extends Fragment {
 
     }
 
-
+/*
     public void gotologin(View view) {
         gotoCarList();
         setNavigationBarVisible();
-    }
+    } */
 }

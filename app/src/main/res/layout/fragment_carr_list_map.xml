@@ -5,7 +5,6 @@
         android:layout_height="match_parent"
         tools:context=".pagess.CarListMapFragment">
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -32,7 +31,6 @@
                     android:layout_gravity="end" />
             </LinearLayout>
 
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvCarlistMap"
                 android:layout_width="match_parent"
@@ -45,6 +43,5 @@
                 android:clickable="true"
                 android:src="@android:drawable/ic_input_add" />
         </LinearLayout>
-
 
     </FrameLayout>

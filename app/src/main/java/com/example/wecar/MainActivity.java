@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
     private void init()
     {
         fbs = FirebaseServices.getInstance();
+        //fbs.getAuth().signOut();
         listType = ListFragmentType.Regular;
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -182,6 +183,7 @@ public class MainActivity extends AppCompatActivity {
 
                                     User user = document.toObject(User.class);
                                     if (fbs.getAuth().getCurrentUser() != null && (fbs.getAuth().getCurrentUser().getEmail().equals(user.getUsername()))) {
+                                    //if (fbs.getAuth().getCurrentUser().getEmail().equals(user.getUsername())) {
                                         currentUser[0] = document.toObject(User.class);
                                         fbs.setCurrentUser(currentUser[0]);
                                     }
