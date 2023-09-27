@@ -330,7 +330,7 @@ public class AddCarFragment extends Fragment {
     public void gotoCarList() {
 
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.frameLayout,new CarsListFragment());
+        ft.replace(R.id.frameLayout,new CarListMapFragment());
         ft.commit();
     }
 

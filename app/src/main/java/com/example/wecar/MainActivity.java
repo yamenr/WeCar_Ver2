@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
         {
             bottomNavigationView.setVisibility(View.VISIBLE);
             gotoCarList();
-            pushFragment(new CarsListFragment());
+            pushFragment(new CarListMapFragment());
         }
     }
 
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void gotoCarList() {
         FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.frameLayout,new CarsListFragment());
+        ft.replace(R.id.frameLayout,new CarListMapFragment());
         ft.commit();
     }
 

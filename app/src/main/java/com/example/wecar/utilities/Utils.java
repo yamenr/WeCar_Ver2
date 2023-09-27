@@ -3,6 +3,7 @@ package com.example.wecar.utilities;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.net.Uri;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -71,7 +72,7 @@ public class Utils {
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-
+                            Log.e("Utils: uploadImage: ", e.getMessage());
                         }
                     });
                     Toast.makeText(context, "Image uploaded successfully", Toast.LENGTH_SHORT).show();

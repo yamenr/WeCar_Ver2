@@ -273,7 +273,7 @@ public class CarListMapFragment extends Fragment {
     public void onPause() {
         super.onPause();
 
-        User u = ((MainActivity)getActivity()).getUserDataObject();
+        User u = fbs.getCurrentUser();
         if (u != null)
             fbs.updateUser(u); // updating favorites
 

@@ -44,9 +44,10 @@ public class FirebaseServices {
         auth=FirebaseAuth.getInstance();
         fire=FirebaseFirestore.getInstance();
         storage=FirebaseStorage.getInstance();
-        currentUser = null;
-        if (auth.getCurrentUser() != null)
-            getCurrentObjectUser();
+        currentUser = getCurrentObjectUser();
+
+        //if (auth.getCurrentUser() == null)
+            //getCurrentObjectUser();
         //getCurrentObjectUser();
         selectedImageURL = null;
     }
