@@ -73,6 +73,7 @@ public class FirebaseServices {
         return instance;
     }
 
+    /*
     public boolean updateUser(User user)
     {
         final boolean[] flag = {false};
@@ -94,7 +95,8 @@ public class FirebaseServices {
         String dateTimeValue = ap.getDateTime(); */
 
         // Create a query for documents based on a specific field
-        Query query = fire.collection(collectionName).
+    /*
+    Query query = fire.collection(collectionName).
                 whereEqualTo(usernameFieldName, user.getUsername());
 
         // Execute the query
@@ -127,7 +129,7 @@ public class FirebaseServices {
                 });
 
         return flag[0];
-    }
+    } */
 
     public User getCurrentObjectUser() {
         ArrayList<User> usersInternal = new ArrayList<>();
@@ -136,7 +138,7 @@ public class FirebaseServices {
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 for (DocumentSnapshot dataSnapshot: queryDocumentSnapshots.getDocuments()){
                     User user = dataSnapshot.toObject(User.class);
-                    if (auth.getCurrentUser().getEmail().equals(user.getUsername()))
+                    if (auth.getCurrentUser() != null && auth.getCurrentUser().getEmail().equals(user.getUsername()))
                         usersInternal.add(user);
                 }
 
@@ -184,5 +186,59 @@ public class FirebaseServices {
 
     public void setCurrentUser(User currentUser) {
         this.currentUser = currentUser;
+    }
+
+    public boolean updateUser(User user)
+    {
+        final boolean[] flag = {false};
+        // Reference to the collection
+        String collectionName = "users";
+        String firstNameFieldName = "firstName";
+        String firstNameValue = user.getFirstName();
+        String lastNameFieldName = "lastName";
+        String lastNameValue = user.getLastName();
+        String usernameFieldName = "username";
+        String usernameValue = user.getUsername();
+        String addressFieldName = "address";
+        String addressValue = user.getAddress();
+        String phoneFieldName = "phone";
+        String phoneValue = user.getPhone();
+        String photoFieldName = "photo";
+        String photoValue = user.getPhoto();
+
+        // Create a query for documents based on a specific field
+        Query query = fire.collection(collectionName).
+                whereEqualTo(usernameFieldName, usernameValue);
+
+        // Execute the query
+        query.get()
+                .addOnSuccessListener((QuerySnapshot querySnapshot) -> {
+                    for (QueryDocumentSnapshot document : querySnapshot) {
+                        // Get a reference to the document
+                        DocumentReference documentRef = document.getReference();
+
+                        // Update specific fields of the document
+                        documentRef.update(
+                                        firstNameFieldName, firstNameValue,
+                                        lastNameFieldName, lastNameValue,
+                                        usernameFieldName, usernameValue,
+                                        addressFieldName, addressValue,
+                                        phoneFieldName, phoneValue,
+                                        photoFieldName, photoValue
+                                )
+                                .addOnSuccessListener(aVoid -> {
+
+                                    flag[0] = true;
+                                })
+                                .addOnFailureListener(e -> {
+                                    System.err.println("Error updating document: " + e);
+                                });
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    System.err.println("Error getting documents: " + e);
+                });
+
+        return flag[0];
     }
 }

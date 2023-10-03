@@ -61,6 +61,12 @@ public class CarListAdapter2 extends RecyclerView.Adapter<CarListAdapter2.MyView
                 itemClickListener.onItemClick(position);
             }
         });
+/*
+        holder.carName.setOnClickListener(v -> {
+            if (clickListener != null) {
+                clickListener.setOnItemClick(position);
+            }
+        }); */
         if (car.getPhoto() == null || car.getPhoto().isEmpty())
         {
             Picasso.get().load(R.drawable.ic_fav).into(holder.ivCar);

@@ -113,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
         else
         {
             bottomNavigationView.setVisibility(View.VISIBLE);
+            //fbs.getCurrentObjectUser();
             gotoCarList();
             pushFragment(new CarListMapFragment());
         }

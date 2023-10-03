@@ -96,6 +96,8 @@ public class CarListMapFragment extends Fragment {
         recyclerView = getView().findViewById(R.id.rvCarlistMap);
         ivProfile = getView().findViewById(R.id.ivProfileCarListMapFragment);
         fbs = FirebaseServices.getInstance();
+        if (fbs.getAuth().getCurrentUser() == null)
+            fbs.setCurrentUser(fbs.getCurrentObjectUser());
         cars = new ArrayList<>();
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -117,24 +119,6 @@ public class CarListMapFragment extends Fragment {
                 ft.commit();
             }
         });
-/*
-        fbs.getFire().collection("cars").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                for (DocumentSnapshot dataSnapshot: queryDocumentSnapshots.getDocuments()){
-                    Car car= dataSnapshot.toObject(Car.class);
-                    list.add(car);
-                }
-
-
-                myAdapter.notifyDataSetChanged();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-
-            }
-        }); */
         srchView = getView().findViewById(R.id.srchViewCarListMapFragment);
         srchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -276,7 +260,6 @@ public class CarListMapFragment extends Fragment {
         User u = fbs.getCurrentUser();
         if (u != null)
             fbs.updateUser(u); // updating favorites
-
 
     }
 }
