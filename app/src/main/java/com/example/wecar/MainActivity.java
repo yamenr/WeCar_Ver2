@@ -40,7 +40,7 @@ import java.util.Stack;
 // TODO: Check favourites, details
 // TODO: Search fragment - recyclerview crash issue
 
-public class MainActivity extends AppCompatActivity {
+public class  MainActivity extends AppCompatActivity {
 
     private FirebaseServices fbs;
     private BottomNavigationView bottomNavigationView;
@@ -91,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
             } */
             else if (item.getItemId() == R.id.action_signout) {
                signout();
+                bottomNavigationView.setVisibility(View.GONE);
               //  selectedFragment=new ProfileFragment();
             }
                 if (selectedFragment != null) {

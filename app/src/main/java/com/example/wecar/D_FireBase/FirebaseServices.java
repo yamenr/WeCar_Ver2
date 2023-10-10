@@ -5,6 +5,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.example.wecar.utilities.UserCallback;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -30,6 +31,7 @@ public class FirebaseServices {
     private FirebaseStorage storage;
     private Uri selectedImageURL;
     private User currentUser;
+    private boolean userChangeFlag;
 
     public Uri getSelectedImageURL() {
         return selectedImageURL;
@@ -44,11 +46,17 @@ public class FirebaseServices {
         auth=FirebaseAuth.getInstance();
         fire=FirebaseFirestore.getInstance();
         storage=FirebaseStorage.getInstance();
-        currentUser = getCurrentObjectUser();
+        getCurrentObjectUser(new UserCallback() {
+            @Override
+            public void onUserLoaded(User user) {
+                // Access the currentUser here
+                if (user != null) {
+                    setCurrentUser(user);
+                }
+            }
+        });
 
-        //if (auth.getCurrentUser() == null)
-            //getCurrentObjectUser();
-        //getCurrentObjectUser();
+        userChangeFlag = false;
         selectedImageURL = null;
     }
 
@@ -64,7 +72,6 @@ public class FirebaseServices {
         return storage;
     }
 
-
     public  static FirebaseServices getInstance(){
         if (instance==null){
             instance=new FirebaseServices();
@@ -73,75 +80,29 @@ public class FirebaseServices {
         return instance;
     }
 
-    /*
-    public boolean updateUser(User user)
-    {
-        final boolean[] flag = {false};
-        // Reference to the collection
-        String collectionName = "users";
-        String firstnameFieldName = "firstName";
-        String lastnameFieldName = "lastName";
-        String usernameFieldName = "username";
-        String phoneFieldName = "phone";
-        String addressFieldName = "address";
-        String photoFieldName = "photo";
-        String favouritsFieldName = "favourits";
+    public boolean isUserChangeFlag() {
+        return userChangeFlag;
+    }
 
-        /*
-        String barberNameValue = ap.getBarber();
-        String customerFieldName = "customer";
-        String customerNameValue = ap.getCustomer();
-        String dateTimeFieldName = "dateTime";
-        String dateTimeValue = ap.getDateTime(); */
+    public void setUserChangeFlag(boolean userChangeFlag) {
+        this.userChangeFlag = userChangeFlag;
+    }
 
-        // Create a query for documents based on a specific field
-    /*
-    Query query = fire.collection(collectionName).
-                whereEqualTo(usernameFieldName, user.getUsername());
-
-        // Execute the query
-        query.get()
-                .addOnSuccessListener((QuerySnapshot querySnapshot) -> {
-                    for (QueryDocumentSnapshot document : querySnapshot) {
-                        // Get a reference to the document
-                        DocumentReference documentRef = document.getReference();
-                        // Update specific fields of the document
-                        documentRef.update(
-                                        firstnameFieldName, user.getFirstName(),
-                                        lastnameFieldName, user.getLastName(),
-                                        usernameFieldName, user.getUsername(),
-                                        phoneFieldName, user.getPhone(),
-                                        addressFieldName, user.getAddress(),
-                                        photoFieldName, user.getPhoto(),
-                                        favouritsFieldName, user.getFavourits()
-                                        )
-                                .addOnSuccessListener(aVoid -> {
-
-                                    flag[0] = true;
-                                })
-                                .addOnFailureListener(e -> {
-                                    System.err.println("Error updating document: " + e);
-                                });
-                    }
-                })
-                .addOnFailureListener(e -> {
-                    System.err.println("Error getting documents: " + e);
-                });
-
-        return flag[0];
-    } */
-
-    public User getCurrentObjectUser() {
-        ArrayList<User> usersInternal = new ArrayList<>();
+    public void getCurrentObjectUser(UserCallback callback) {        ArrayList<User> usersInternal = new ArrayList<>();
         fire.collection("users").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 for (DocumentSnapshot dataSnapshot: queryDocumentSnapshots.getDocuments()){
                     User user = dataSnapshot.toObject(User.class);
-                    if (auth.getCurrentUser() != null && auth.getCurrentUser().getEmail().equals(user.getUsername()))
+                    if (auth.getCurrentUser() != null && auth.getCurrentUser().getEmail().equals(user.getUsername())) {
                         usersInternal.add(user);
-                }
 
+                    }
+                }
+                if (usersInternal.size() > 0)
+                    currentUser = usersInternal.get(0);
+
+                callback.onUserLoaded(currentUser);
 
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -150,33 +111,6 @@ public class FirebaseServices {
 
             }
         });
-
-        if (usersInternal.size() > 0)
-            currentUser = usersInternal.get(0);
-        /*
-        String collectionName = "users";
-        String usernameFieldName = "username";
-
-        // Create a query for documents based on a specific field
-        Query query = fire.collection(collectionName).
-                whereEqualTo(usernameFieldName, auth.getCurrentUser().getEmail());
-
-        // Execute the query
-        query.get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful())
-                        {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                currentUser = document.toObject(User.class);
-                            }
-
-                        }
-                    }
-                });
-*/
-        return currentUser;
     }
 
     public User getCurrentUser()
@@ -205,6 +139,8 @@ public class FirebaseServices {
         String phoneValue = user.getPhone();
         String photoFieldName = "photo";
         String photoValue = user.getPhoto();
+        String favoritesFieldName = "favorites";
+        ArrayList<String> favoritesValue = user.getFavorites();
 
         // Create a query for documents based on a specific field
         Query query = fire.collection(collectionName).
@@ -224,7 +160,8 @@ public class FirebaseServices {
                                         usernameFieldName, usernameValue,
                                         addressFieldName, addressValue,
                                         phoneFieldName, phoneValue,
-                                        photoFieldName, photoValue
+                                        photoFieldName, photoValue,
+                                        favoritesFieldName, favoritesValue
                                 )
                                 .addOnSuccessListener(aVoid -> {
 

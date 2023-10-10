@@ -246,7 +246,7 @@ public class FavoriteFragment extends Fragment {
                                     User u = fbs.getCurrentUser();
                                     if (u != null) {
                                         CarItem car = document.toObject(CarItem.class);
-                                        if (u.getFavourits().contains(car.getId()))
+                                        if (u.getFavorites().contains(car.getId()))
                                             cars.add(document.toObject(CarItem.class));
                                     }
                                 }

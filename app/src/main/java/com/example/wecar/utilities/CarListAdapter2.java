@@ -45,7 +45,7 @@ public class CarListAdapter2 extends RecyclerView.Adapter<CarListAdapter2.MyView
         User u = fbs.getCurrentUser();
         if (u != null)
         {
-            if (u.getFavourits().contains(car.getId()))
+            if (u.getFavorites().contains(car.getId()))
                 Picasso.get().load(R.drawable.favcheck).into(holder.ivFavourite);
             else
                 Picasso.get().load(R.drawable.ic_fav).into(holder.ivFavourite);
@@ -85,6 +85,7 @@ public class CarListAdapter2 extends RecyclerView.Adapter<CarListAdapter2.MyView
                 {
                     addStar(car, holder);
                 }
+                fbs.setUserChangeFlag(true);
                 //setFavourite(holder, car);
             }
         });
@@ -93,8 +94,8 @@ public class CarListAdapter2 extends RecyclerView.Adapter<CarListAdapter2.MyView
     private void removeStar(CarItem car, CarListAdapter2.MyViewHolder holder) {
         User u = fbs.getCurrentUser();
         if (u != null) {
-            if (u.getFavourits().contains(car.getId())) {
-                u.getFavourits().remove(car.getId());
+            if (u.getFavorites().contains(car.getId())) {
+                u.getFavorites().remove(car.getId());
                 holder.ivFavourite.setImageResource(android.R.color.transparent);
                 Picasso.get().load(R.drawable.ic_fav).into(holder.ivFavourite);
             }
@@ -104,7 +105,7 @@ public class CarListAdapter2 extends RecyclerView.Adapter<CarListAdapter2.MyView
     private void addStar(CarItem car, CarListAdapter2.MyViewHolder holder) {
         User u = fbs.getCurrentUser();
         if (u != null) {
-                u.getFavourits().add(car.getId());
+                u.getFavorites().add(car.getId());
             holder.ivFavourite.setImageResource(android.R.color.transparent);
             Picasso.get().load(R.drawable.favcheck).into(holder.ivFavourite);
         }
@@ -114,7 +115,7 @@ public class CarListAdapter2 extends RecyclerView.Adapter<CarListAdapter2.MyView
         User u = fbs.getCurrentUser();
         if (u != null)
         {
-            if (u.getFavourits().contains(car.getId()))
+            if (u.getFavorites().contains(car.getId()))
                 return true;
         }
         return false;

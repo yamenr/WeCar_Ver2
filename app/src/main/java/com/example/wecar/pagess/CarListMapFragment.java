@@ -96,8 +96,9 @@ public class CarListMapFragment extends Fragment {
         recyclerView = getView().findViewById(R.id.rvCarlistMap);
         ivProfile = getView().findViewById(R.id.ivProfileCarListMapFragment);
         fbs = FirebaseServices.getInstance();
-        if (fbs.getAuth().getCurrentUser() == null)
-            fbs.setCurrentUser(fbs.getCurrentObjectUser());
+        fbs.setUserChangeFlag(false);
+        /*if (fbs.getAuth().getCurrentUser() == null)
+            fbs.setCurrentUser(fbs.getCurrentObjectUser()); */
         cars = new ArrayList<>();
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -253,12 +254,12 @@ public class CarListMapFragment extends Fragment {
         return cars;
     }
 
+
     @Override
     public void onPause() {
         super.onPause();
-
         User u = fbs.getCurrentUser();
-        if (u != null)
+        if (u != null && fbs.isUserChangeFlag())
             fbs.updateUser(u); // updating favorites
 
     }

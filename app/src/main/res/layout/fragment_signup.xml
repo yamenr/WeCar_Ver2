@@ -119,7 +119,7 @@
             android:layout_marginBottom="26dp"
             android:ems="10"
             android:hint="phone..."
-            android:inputType="text"
+            android:inputType="number|numberDecimal|numberSigned"
             app:layout_constraintBottom_toTopOf="@+id/etAddressSignupFragment"
             app:layout_constraintStart_toStartOf="@+id/etConfirmPasswordSignupFragment"
             app:layout_constraintTop_toBottomOf="@+id/etConfirmPasswordSignupFragment" />

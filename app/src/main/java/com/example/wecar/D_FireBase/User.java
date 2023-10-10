@@ -11,7 +11,7 @@ public class User {
     private String phone;
     private String address;
     private String photo;
-    private ArrayList<String> favourits;
+    private ArrayList<String> favorites;
 
     public User() {
     }
@@ -23,7 +23,7 @@ public class User {
         this.phone = phone;
         this.address = address;
         this.photo = photo;
-        this.favourits = new ArrayList<>();
+        this.favorites = new ArrayList<>();
     }
 
     public User(Parcel in) {
@@ -77,12 +77,12 @@ public class User {
         this.photo = photo;
     }
 
-    public ArrayList<String> getFavourits() {
-        return favourits;
+    public ArrayList<String> getFavorites() {
+        return favorites;
     }
 
-    public void setFavourits(ArrayList<String> favourits) {
-        this.favourits = favourits;
+    public void setFavorites(ArrayList<String> favourits) {
+        this.favorites = favourits;
     }
 
     @Override
