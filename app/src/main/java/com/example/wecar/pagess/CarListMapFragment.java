@@ -104,7 +104,7 @@ public class CarListMapFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         cars = getCars();
         myAdapter = new CarListAdapter2(getActivity(), cars);
-
+        filteredList = new ArrayList<>();
         myAdapter.setOnItemClickListener(new CarListAdapter2.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
