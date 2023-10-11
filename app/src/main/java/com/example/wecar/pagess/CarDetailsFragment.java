@@ -21,6 +21,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.wecar.D_FireBase.CarItem;
 import com.example.wecar.R;
 import com.example.wecar.D_FireBase.Car;
 import com.example.wecar.D_FireBase.FirebaseServices;
@@ -39,7 +40,7 @@ public class CarDetailsFragment extends Fragment {
             tvManufacturer,tvYear,tvCar_model,tvTest,tvkilometre,
             tvEngine_capacity,tvGear_shifting_model,tvPrice, tvPhone;
     private ImageView ivCarPhoto;
-    private Car myCar;
+    private CarItem myCar;
     private Button sendSMSButton, btnWhatsapp, btnCall;
 
     private boolean isEnlarged = false; //משתנה כדי לעקוב אחרי המצב הנוכחי של התמונה (האם היא מגודלת או לא)

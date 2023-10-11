@@ -187,6 +187,7 @@ public class CarListMapFragment extends Fragment {
         myAdapter.setOnItemClickListener(new CarListAdapter2.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
+                /*
                 // Handle item click here
                 String selectedItem = filteredList.get(position).getNameCar();
                 Toast.makeText(getActivity(), "Clicked: " + selectedItem, Toast.LENGTH_SHORT).show();
@@ -196,7 +197,7 @@ public class CarListMapFragment extends Fragment {
                 cd.setArguments(args);
                 FragmentTransaction ft=getActivity().getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.frameLayout,cd);
-                ft.commit();
+                ft.commit(); */
             }
         });
     }

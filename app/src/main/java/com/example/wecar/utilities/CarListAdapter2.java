@@ -1,14 +1,17 @@
 package com.example.wecar.utilities;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.wecar.D_FireBase.CarItem;
@@ -16,6 +19,7 @@ import com.example.wecar.D_FireBase.FirebaseServices;
 import com.example.wecar.D_FireBase.User;
 import com.example.wecar.MainActivity;
 import com.example.wecar.R;
+import com.example.wecar.pagess.CarDetailsFragment;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -30,6 +34,21 @@ public class CarListAdapter2 extends RecyclerView.Adapter<CarListAdapter2.MyView
         this.context = context;
         this.carsList = carsList;
         this.fbs = FirebaseServices.getInstance();
+        this.itemClickListener = new OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                /*
+                String selectedItem = filteredList.get(position).getNameCar();
+                Toast.makeText(getActivity(), "Clicked: " + selectedItem, Toast.LENGTH_SHORT).show(); */
+                Bundle args = new Bundle();
+                args.putParcelable("car", carsList.get(position)); // or use Parcelable for better performance
+                CarDetailsFragment cd = new CarDetailsFragment();
+                cd.setArguments(args);
+                FragmentTransaction ft= ((MainActivity)context).getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.frameLayout,cd);
+                ft.commit();
+            }
+        } ;
     }
 
     @NonNull
