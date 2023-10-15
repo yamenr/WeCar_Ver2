@@ -132,6 +132,7 @@ public class ProfileFragment extends Fragment {
 
                         fbs.updateUser(user);
                         utils.showMessageDialog(getActivity(), "Data updated succesfully!");
+                        fbs.reloadInstance();
                     }
                     else
                     {

@@ -90,7 +90,7 @@ public class LoginFragment extends Fragment {
     public void onStart() {
         super.onStart();
         // connecting components
-        fbs=FirebaseServices.getInstance();
+        fbs = FirebaseServices.getInstance();
         asGuest=getView().findViewById(R.id.btnGuest);
         asGuest.setVisibility(View.INVISIBLE);
         etUsername=getView().findViewById(R.id.etUsernameLogin);
@@ -147,6 +147,7 @@ public class LoginFragment extends Fragment {
                         {
                             //Toast.makeText(getActivity(), "you have succesfully logged", Toast.LENGTH_SHORT).show();
                             //gotoAddCarFragment();
+                            fbs = FirebaseServices.reloadInstance();
                             gotoCarListMap();
                             Toast.makeText(getActivity(), "Welcome ", Toast.LENGTH_SHORT).show();
 
