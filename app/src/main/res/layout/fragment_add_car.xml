@@ -18,7 +18,8 @@
             android:id="@+id/etCarNumberAddFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Car Number" />
+            android:hint="Car Number"
+            android:inputType="number" />
 
         <!-- Car Name -->
         <EditText
@@ -53,7 +54,8 @@
             android:id="@+id/etPhoneAddFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Phone" />
+            android:hint="Phone"
+            android:inputType="number" />
 
         <!-- Car Type -->
 
@@ -62,21 +64,24 @@
             android:id="@+id/etTestAddFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Year of Test" />
+            android:hint="Year of Test"
+            android:inputType="number" />
 
         <!-- Kilometres -->
         <EditText
             android:id="@+id/etKilometreAddFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Kilometres" />
+            android:hint="Kilometres"
+            android:inputType="number" />
 
         <!-- Engine Capacity -->
         <EditText
             android:id="@+id/etEngineCapacityAddFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Engine Capacity" />
+            android:hint="Engine Capacity"
+            android:inputType="number" />
 
         <!-- ... other views ... -->
 
@@ -92,7 +97,8 @@
             android:id="@+id/etHorsePowerAddFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Horse Power" />
+            android:hint="Horse Power"
+            android:inputType="number" />
 
         <!-- Gear Shifting Model -->
         <EditText
@@ -113,7 +119,8 @@
             android:id="@+id/etPriceAddFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Price" />
+            android:hint="Price"
+            android:inputType="number" />
 
         <!-- Buttons for actions -->
         <LinearLayout

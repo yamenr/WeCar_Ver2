@@ -187,6 +187,7 @@ public class ProfileFragment extends Fragment {
 
         if (requestCode == GALLERY_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             if (data != null) {
+                btnUpdate.setEnabled(false);
                 // Get the image's URI
                 final android.net.Uri imageUri = data.getData();
 
@@ -220,11 +221,13 @@ public class ProfileFragment extends Fragment {
                         }
                     });
                     Toast.makeText(getActivity(), "Image uploaded successfully", Toast.LENGTH_SHORT).show();
+                    btnUpdate.setEnabled(true);
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     Toast.makeText(getActivity(), "Failed to upload image", Toast.LENGTH_SHORT).show();
+                    btnUpdate.setEnabled(true);
                 }
             });
         } else {
